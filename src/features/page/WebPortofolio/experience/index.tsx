@@ -1,5 +1,4 @@
 'use client';
-
 import Navbar from '@/src/features/core/components/navbar';
 import Footer from '@/src/features/core/components/footer';
 
@@ -43,14 +42,13 @@ const experiences: ExperienceItem[] = [
 
 export default function ExperiencePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-
       <main className="mx-auto max-w-7xl px-6 py-16 md:py-24">
         <section className="mx-auto max-w-4xl">
-          
+
           {/* TITLE */}
-          <h1 className="mb-12 text-2xl font-semibold tracking-tight text-neutral-950 md:text-3xl fade-up">
+          <h1 className="mb-12 text-2xl font-semibold tracking-tight text-foreground md:text-3xl fade-up">
             Experiences
           </h1>
 
@@ -61,30 +59,26 @@ export default function ExperiencePage() {
                 key={`${item.company}-${index}`}
                 className={`pb-12 fade-up [animation-delay:${index * 150}ms] ${
                   index !== experiences.length - 1
-                    ? 'border-b border-neutral-200'
+                    ? 'border-b border-border'
                     : ''
                 }`}
               >
-                <p className="mb-5 text-sm font-medium uppercase tracking-[0.12em] text-neutral-500">
+                <p className="mb-5 text-sm font-medium uppercase tracking-[0.12em] text-muted-foreground">
                   {item.period}
                 </p>
-
-                <h2 className="text-xl font-bold text-neutral-950">
+                <h2 className="text-xl font-bold text-foreground">
                   {item.company}
                 </h2>
-
-                <p className="mt-1 text-base font-semibold text-neutral-900">
+                <p className="mt-1 text-base font-semibold text-foreground">
                   {item.role}
                 </p>
-
                 {item.description && (
-                  <p className="mt-3 max-w-3xl text-[15px] leading-8 text-neutral-700">
+                  <p className="mt-3 max-w-3xl text-[15px] leading-8 text-muted-foreground">
                     {item.description}
                   </p>
                 )}
-
                 {item.bullets && item.bullets.length > 0 && (
-                  <ul className="mt-6 space-y-4 pl-5 text-[15px] leading-8 text-neutral-700 marker:text-neutral-300 list-disc">
+                  <ul className="mt-6 space-y-4 pl-5 text-[15px] leading-8 text-muted-foreground marker:text-muted-foreground list-disc">
                     {item.bullets.map((bullet, bulletIndex) => (
                       <li key={bulletIndex}>{bullet}</li>
                     ))}
@@ -95,8 +89,7 @@ export default function ExperiencePage() {
           </div>
         </section>
       </main>
-
-      < Footer />
+      <Footer />
     </div>
   );
 }

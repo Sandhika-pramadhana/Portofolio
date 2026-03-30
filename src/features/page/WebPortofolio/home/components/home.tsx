@@ -31,30 +31,28 @@ export default function Home({
       <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
         {/* Kolom kiri: konten teks */}
         <div className="max-w-4xl space-y-6">
-          <h1 className="text-xl font-medium text-neutral-600 md:text-2xl">
+          <h1 className="text-xl font-medium text-muted-foreground md:text-2xl">
             Sandhika Pramadhana
           </h1>
-          <h2 className="text-4xl font-bold leading-tight text-black md:text-6xl lg:text-7xl">
+          <h2 className="text-4xl font-bold leading-tight text-foreground md:text-6xl lg:text-7xl">
             FULLSTACK & CYBER SECURITY
             <br />
             ENGINEER
           </h2>
-          <p className="text-lg text-neutral-600 md:text-xl">
+          <p className="text-lg text-muted-foreground md:text-xl">
             Full-stack developer and pentester
           </p>
-          <p className="max-w-3xl text-base leading-relaxed text-neutral-700 md:text-lg">
+          <p className="max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
             Full-stack developer and penetration tester focused on building secure digital
             products, assessing web application security, and identifying vulnerabilities
             before they can be exploited.
           </p>
-
           {/* Lanyard hanya tampil di mobile */}
           {isMobile && (
             <div className="w-full h-[400px] mt-8">
               <Footer />
             </div>
           )}
-
           <div className="mt-12 flex flex-wrap gap-4">
             <Button variant="outline" size="lg" className="rounded-full" onClick={onViewProjects}>
               <FolderGit2 className="mr-2 h-4 w-4" />
@@ -79,7 +77,6 @@ export default function Home({
             </Button>
           </div>
         </div>
-
         {/* Kolom kanan hanya tampil di desktop */}
         <div className="hidden lg:flex justify-center lg:justify-end h-[600px]">
           <Footer />

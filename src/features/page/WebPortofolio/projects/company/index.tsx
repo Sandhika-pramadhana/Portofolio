@@ -34,7 +34,7 @@ const experiences: ExperienceItem[] = [
 
 export default function ExperiencePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
 
       <main className="page-transition mx-auto max-w-7xl px-6 py-16 md:py-24">
@@ -42,7 +42,7 @@ export default function ExperiencePage() {
           <div className="mb-8">
             <Link
               href="/Projects"
-              className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-neutral-900"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
             >
               ← Back to projects
             </Link>
@@ -50,7 +50,7 @@ export default function ExperiencePage() {
 
           <h1
             style={{ animationDelay: '0ms', opacity: 0 }}
-            className="mb-12 text-2xl font-semibold tracking-tight text-neutral-950 md:text-3xl fade-up"
+            className="mb-12 text-2xl font-semibold tracking-tight text-foreground md:text-3xl fade-up"
           >
             Experiences
           </h1>
@@ -62,24 +62,24 @@ export default function ExperiencePage() {
                 style={{ animationDelay: `${(index + 1) * 150}ms`, opacity: 0 }}
                 className={`pb-12 fade-up ${
                   index !== experiences.length - 1
-                    ? 'border-b border-neutral-200'
+                    ? 'border-b border-border'
                     : ''
                 }`}
               >
                 <div className="mb-5 flex items-center gap-3">
-                  <p className="text-sm font-medium uppercase tracking-[0.12em] text-neutral-500">
+                  <p className="text-sm font-medium uppercase tracking-[0.12em] text-muted-foreground">
                     {item.period}
                   </p>
-                  <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">
+                  <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400">
                     Website Project
                   </span>
                 </div>
 
-                <h2 className="text-xl font-bold text-neutral-950">
+                <h2 className="text-xl font-bold text-foreground">
                   {item.company}
                 </h2>
 
-                <p className="mt-1 text-base font-semibold text-neutral-900">
+                <p className="mt-1 text-base font-semibold text-foreground">
                   {item.role}
                 </p>
 
@@ -88,7 +88,7 @@ export default function ExperiencePage() {
                     href={item.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-1 inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-900"
+                    className="mt-1 inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
                   >
                     {item.website}
                     <svg
@@ -110,13 +110,13 @@ export default function ExperiencePage() {
                 )}
 
                 {item.description && (
-                  <p className="mt-3 max-w-3xl text-[15px] leading-8 text-neutral-700">
+                  <p className="mt-3 max-w-3xl text-[15px] leading-8 text-muted-foreground">
                     {item.description}
                   </p>
                 )}
 
                 {item.bullets && item.bullets.length > 0 && (
-                  <ul className="mt-6 list-disc space-y-4 pl-5 text-[15px] leading-8 text-neutral-700 marker:text-neutral-300">
+                  <ul className="mt-6 list-disc space-y-4 pl-5 text-[15px] leading-8 text-muted-foreground marker:text-muted-foreground">
                     {item.bullets.map((bullet, bulletIndex) => (
                       <li key={bulletIndex}>{bullet}</li>
                     ))}

@@ -1,5 +1,4 @@
 'use client';
-
 import Image from 'next/image';
 import Navbar from '@/src/features/core/components/navbar';
 import Footer from '@/src/features/core/components/footer';
@@ -34,23 +33,20 @@ const certificates = [
 
 export default function CertificatePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-
       <main className="mx-auto max-w-7xl px-6 py-16 md:py-24">
         <section className="space-y-10 md:space-y-14">
-
           {/* HEADER */}
           <div className="max-w-3xl space-y-4 fade-up">
-            <span className="inline-flex rounded-full border border-neutral-200 bg-white px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">
+            <span className="inline-flex rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
               Certifications
             </span>
-
             <div className="space-y-3">
-              <h1 className="text-3xl font-semibold tracking-tight text-neutral-950 md:text-5xl">
+              <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
                 Certificate
               </h1>
-              <p className="max-w-2xl text-sm leading-7 text-neutral-600 md:text-base">
+              <p className="max-w-2xl text-sm leading-7 text-muted-foreground md:text-base">
                 A selection of certifications, technical training, and learning milestones
                 that support my work in cybersecurity and web development.
               </p>
@@ -62,9 +58,9 @@ export default function CertificatePage() {
             {certificates.map((cert, index) => (
               <Card
                 key={index}
-                className={`group overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg fade-up [animation-delay:${index * 150}ms]`}
+                className={`group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg fade-up [animation-delay:${index * 150}ms]`}
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
+                <div className="relative aspect-[4/3] overflow-hidden bg-muted">
                   <Image
                     src={cert.image}
                     alt={cert.title}
@@ -72,23 +68,20 @@ export default function CertificatePage() {
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
-
                 <CardContent className="space-y-4 p-5">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between gap-3">
-                      <span className="rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-600">
+                      <span className="rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
                         {cert.date}
                       </span>
-                      <span className="text-xs font-medium uppercase tracking-[0.16em] text-neutral-400">
+                      <span className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground">
                         Verified
                       </span>
                     </div>
-
-                    <h2 className="text-lg font-semibold leading-snug text-neutral-950 md:text-xl">
+                    <h2 className="text-lg font-semibold leading-snug text-foreground md:text-xl">
                       {cert.title}
                     </h2>
-
-                    <p className="text-sm leading-6 text-neutral-600">
+                    <p className="text-sm leading-6 text-muted-foreground">
                       Issued by {cert.issuer}
                     </p>
                   </div>
@@ -98,8 +91,7 @@ export default function CertificatePage() {
           </div>
         </section>
       </main>
-
-      < Footer />
+      <Footer />
     </div>
   );
 }

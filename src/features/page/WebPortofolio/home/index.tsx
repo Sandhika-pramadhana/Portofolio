@@ -19,7 +19,7 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-background text-foreground flex flex-col transition-colors duration-300">
       {/* Navbar */}
       <Navbar />
 
