@@ -42,11 +42,35 @@ export default function Lanyard({
   fov = 20,
   transparent = true
 }: LanyardProps) {
+  // FIX 1: Detect mobile untuk camera responsif
+  const [isMobile, setIsMobile] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 768;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  // FIX 2: Camera lebih dekat di mobile agar kartu tidak terlalu kecil
+  const cameraPosition: [number, number, number] = isMobile ? [0, 0, 22] : position;
+  const cameraFov = isMobile ? 30 : fov;
+
   return (
-    // ✅ FIX: ganti h-screen → h-full supaya mengikuti tinggi parent grid
-    <div className="relative z-0 w-full h-full flex justify-center items-center transform scale-100 origin-center">
+    // FIX 3: minHeight: 400px memastikan Canvas punya height di mobile
+    // h-full tetap dipertahankan agar desktop tidak berubah
+    <div
+      className="relative z-0 w-full h-full flex justify-center items-center transform scale-100 origin-center"
+      style={{ minHeight: '400px' }}
+    >
+      {/* FIX 4: style width/height eksplisit agar R3F Canvas mengisi parent */}
       <Canvas
-        camera={{ position, fov }}
+        style={{ width: '100%', height: '100%' }}
+        camera={{ position: cameraPosition, fov: cameraFov }}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
@@ -129,16 +153,17 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
   const [dragged, drag] = useState<false | THREE.Vector3>(false);
   const [hovered, hover] = useState(false);
 
+  // FIX 5: breakpoint mobile disamakan dengan Lanyard component (768px)
   const [isSmall, setIsSmall] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
-      return window.innerWidth < 1024;
+      return window.innerWidth < 768;
     }
     return false;
   });
 
   useEffect(() => {
     const handleResize = (): void => {
-      setIsSmall(window.innerWidth < 1024);
+      setIsSmall(window.innerWidth < 768);
     };
     window.addEventListener('resize', handleResize);
     return (): void => window.removeEventListener('resize', handleResize);
