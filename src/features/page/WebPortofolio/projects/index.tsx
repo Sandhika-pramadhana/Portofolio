@@ -1,4 +1,5 @@
 'use client';
+
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/src/features/core/components/navbar';
@@ -59,7 +60,7 @@ const projects: ProjectItem[] = [
   },
 ];
 
-const ITEMS_PER_PAGE: number = 5;
+const ITEMS_PER_PAGE = 5;
 
 const filterOptions: { label: string; value: FilterType }[] = [
   { label: 'All Projects', value: 'all' },
@@ -68,7 +69,7 @@ const filterOptions: { label: string; value: FilterType }[] = [
 ];
 
 export default function ProjectsPage() {
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState(1);
   const [filter, setFilter] = useState<FilterType>('all');
 
   const filteredProjects = useMemo(() => {
@@ -80,8 +81,7 @@ export default function ProjectsPage() {
 
   const currentProjects = useMemo(() => {
     const start = (page - 1) * ITEMS_PER_PAGE;
-    const end = start + ITEMS_PER_PAGE;
-    return filteredProjects.slice(start, end);
+    return filteredProjects.slice(start, start + ITEMS_PER_PAGE);
   }, [page, filteredProjects]);
 
   const startItem =
@@ -91,13 +91,14 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
+
       <main className="mx-auto max-w-7xl px-6 py-16 md:py-24">
         <section className="mx-auto max-w-6xl">
-          {/* Layout: Sidebar + Content */}
           <div className="flex flex-col gap-10 md:flex-row">
-            {/* Sidebar Filter */}
-            <div className="w-full md:w-60 md:mt-[85px]">
-            <p className="mb-4 text-sm font-semibold">Filter Projects</p>
+            
+            {/* SIDEBAR */}
+            <div className="w-full md:w-60 md:mt-[85px] fade-up" style={{ opacity: 0 }}>
+              <p className="mb-4 text-sm font-semibold">Filter Projects</p>
               <div className="flex flex-col gap-3 text-sm">
                 {filterOptions.map((item) => (
                   <label
@@ -118,21 +119,23 @@ export default function ProjectsPage() {
               </div>
             </div>
 
-            {/* Content */}
+            {/* CONTENT */}
             <div className="flex-1">
-              {/* Title */}
-              <div className="mb-12">
+              
+              {/* TITLE */}
+              <div className="mb-12 fade-up" style={{ opacity: 0 }}>
                 <h1 className="text-2xl font-semibold tracking-tight md:text-3xl">
                   Projects
                 </h1>
               </div>
 
-              {/* List */}
+              {/* LIST */}
               <div className="space-y-12">
                 {currentProjects.map((project, index) => (
                   <article
                     key={`${project.slug}-${index}`}
-                    className={`pb-12 ${
+                    style={{ opacity: 0 }}
+                    className={`pb-12 fade-up [animation-delay:${index * 150}ms] ${
                       index !== currentProjects.length - 1
                         ? 'border-b border-border'
                         : ''
@@ -141,12 +144,16 @@ export default function ProjectsPage() {
                     <p className="mb-3 text-sm uppercase text-muted-foreground">
                       {project.period}
                     </p>
+
                     <h2 className="text-xl font-bold">{project.title}</h2>
+
                     <p className="mt-1 font-semibold">{project.role}</p>
+
                     <p className="mt-3 text-[15px] leading-7 text-muted-foreground">
                       {project.description}
                     </p>
-                    {/* Tech */}
+
+                    {/* TECH */}
                     <div className="mt-4 flex flex-wrap gap-2">
                       {project.tech.map((item) => (
                         <span
@@ -157,7 +164,8 @@ export default function ProjectsPage() {
                         </span>
                       ))}
                     </div>
-                    {/* Detail */}
+
+                    {/* DETAIL */}
                     <Link
                       href={`/Projects/${project.slug}`}
                       className="mt-4 inline-flex text-sm font-semibold underline"
@@ -168,19 +176,20 @@ export default function ProjectsPage() {
                 ))}
               </div>
 
-              {/* Empty State */}
+              {/* EMPTY */}
               {currentProjects.length === 0 && (
                 <p className="text-sm text-muted-foreground">
                   No projects found.
                 </p>
               )}
 
-              {/* Pagination */}
+              {/* PAGINATION */}
               {filteredProjects.length > 0 && (
-                <div className="mt-14 flex flex-col gap-4 border-t pt-6 md:flex-row md:items-center md:justify-between">
+                <div className="mt-14 flex flex-col gap-4 border-t pt-6 md:flex-row md:items-center md:justify-between fade-up" style={{ opacity: 0 }}>
                   <div className="text-sm text-muted-foreground">
                     Showing {startItem}-{endItem} of {filteredProjects.length}
                   </div>
+
                   <div className="flex flex-wrap gap-2">
                     <button
                       onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
@@ -189,6 +198,7 @@ export default function ProjectsPage() {
                     >
                       Prev
                     </button>
+
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map(
                       (pageNumber) => (
                         <button
@@ -204,6 +214,7 @@ export default function ProjectsPage() {
                         </button>
                       )
                     )}
+
                     <button
                       onClick={() =>
                         setPage((prev) => Math.min(prev + 1, totalPages))
@@ -217,9 +228,11 @@ export default function ProjectsPage() {
                 </div>
               )}
             </div>
+
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
   );
