@@ -1,26 +1,40 @@
 'use client';
+
 import Link from 'next/link';
 
 export default function Experience() {
   return (
     <section className="mb-24">
-      <h3 className="text-2xl md:text-3xl font-bold mb-8 text-foreground">
-        Experiences
-      </h3>
+      <div className="mb-8 flex items-center justify-between gap-4">
+        <h3 className="text-2xl font-bold text-foreground md:text-3xl">
+          Experiences
+        </h3>
+
+        <Link
+          href="/Experience"
+          className="shrink-0 text-sm font-semibold text-foreground underline underline-offset-4"
+        >
+          View all experiences
+        </Link>
+      </div>
+
       <div className="space-y-4">
-        {/* POS DIGI */}
-        <div className="border border-border rounded-xl p-6">
+        <div className="rounded-xl border border-border p-6">
           <h4 className="text-lg font-semibold text-foreground">
-            Fullstack Engineer
+            Security Tester
           </h4>
-          <p className="text-muted-foreground text-sm mt-1">
-            Pos Digital Indonesia • 2025 - 2026
+
+          <p className="mt-1 text-sm text-muted-foreground">
+            Independent · Aug 2026 – Present
           </p>
-          <p className="text-muted-foreground mt-3">
-            Developed ERP-based financial dashboard integrated with SAP to monitor
-            revenue and COGS (Agen & B2B), while also contributing to company website,
-            CMS, and improving application security through testing and code hardening.
+
+          <p className="mt-3 text-muted-foreground">
+            Discovered and reported 10 vulnerabilities through bug bounty
+            platforms and self-hosted programs, and wrote reports with
+            reproduction steps, impact analysis, and remediation referencing
+            the OWASP Top 10.
           </p>
+
           <Link
             href="/Experience"
             className="mt-4 inline-flex text-sm font-semibold text-foreground underline underline-offset-4"
@@ -28,18 +42,21 @@ export default function Experience() {
             View details
           </Link>
         </div>
-        {/* TELUS */}
-        <div className="border border-border rounded-xl p-6">
+
+        <div className="rounded-xl border border-border p-6">
           <h4 className="text-lg font-semibold text-foreground">
-            AI Community Surfer
+            Web Developer
           </h4>
-          <p className="text-muted-foreground text-sm mt-1">
-            Telus International • 2023
+
+          <p className="mt-1 text-sm text-muted-foreground">
+            Pos Digital Indonesia · Feb 2025 – Feb 2026
           </p>
-          <p className="text-muted-foreground mt-3">
-            Supported machine learning improvement by evaluating search results,
-            performing data labeling, and ensuring relevance and accuracy of AI models.
+
+          <p className="mt-3 text-muted-foreground">
+            Worked on SAP-based financial systems, dashboard modernization,
+            data reconciliation, and company website development.
           </p>
+
           <Link
             href="/Experience"
             className="mt-4 inline-flex text-sm font-semibold text-foreground underline underline-offset-4"

@@ -6,6 +6,12 @@ import { Card, CardContent } from '@/src/features/core/components/ui/card';
 
 const certificates = [
   {
+    title: 'Responsible Disclosure',
+    issuer: 'BMKG Institution',
+    date: '2026',
+    image: '/certifacate/BMKG.jpg',
+  },
+  {
     title: 'Certified Ethical Hacker (CEH)',
     issuer: 'Course Net',
     date: '2025',

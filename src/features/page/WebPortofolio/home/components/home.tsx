@@ -35,17 +35,11 @@ export default function Home({
             Sandhika Pramadhana
           </h1>
           <h2 className="text-4xl font-bold leading-tight text-foreground md:text-6xl lg:text-7xl">
-            FULLSTACK & CYBER SECURITY
+            Web Developer & Security Tester
             <br />
-            ENGINEER
           </h2>
-          <p className="text-lg text-muted-foreground md:text-xl">
-            Full-stack developer and pentester
-          </p>
           <p className="max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Full-stack developer and penetration tester focused on building secure digital
-            products, assessing web application security, and identifying vulnerabilities
-            before they can be exploited.
+          Web developer and security tester focused on building secure digital products and identifying vulnerabilities before they can be exploited.
           </p>
           {/* Lanyard hanya tampil di mobile */}
           {isMobile && (
