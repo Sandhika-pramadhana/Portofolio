@@ -11,14 +11,16 @@ export default function SecurityTester() {
   
         <ul className="mt-6 space-y-4 pl-5 text-[15px] leading-8 text-muted-foreground marker:text-muted-foreground list-disc">
           <li>
-            Discovered and reported 10 vulnerabilities through bug bounty
-            platforms and self-hosted programs across OWASP Top 10 categories,
-            including Broken Access Control, Injection, Security
-            Misconfiguration, and Authentication Failures.
+          Identified and validated 10 vulnerabilities across web applications through bug bounty platforms and self-hosted programs, covering OWASP Top 10 categories including Broken Access Control, Injection, Security Misconfiguration, and Authentication Failures.
           </li>
           <li>
-            Wrote reports with reproduction steps, impact analysis, and
-            remediation referencing the OWASP Top 10.
+          Performed end-to-end testing workflow: scope analysis, reconnaissance and attack surface mapping, vulnerability validation, and controlled exploitation to confirm real-world impact. Rated each finding’s severity using CVSS v3.1 to prioritize remediation
+          </li>
+          <li>
+          Retested remediated vulnerabilities using the original PoC steps to confirm the issues were fully resolved.
+          </li>
+          <li>
+          Authored technical reports with step-by-step reproduction, evidence (PoC/screenshots), impact analysis, and remediation recommendations aligned with the OWASP Top 10.
           </li>
         </ul>
       </article>
